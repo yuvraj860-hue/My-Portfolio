@@ -3,6 +3,7 @@ export const profile = {
   firstName: "Yuvraj",
   fullName: "Yuvraj Singh",
   title: "AI/ML Engineer & AI Integration Specialist",
+  avatar: "/profile.jpg",
   headline:
     "I design, build and integrate intelligent systems that combine modern machine learning with practical, search-optimized software — turning data into products recruiters and businesses can verify and trust.",
   tagline: "Building AI-native products with verified, measurable results.",
