@@ -136,7 +136,7 @@ export function Projects() {
                     <Button
                       asChild
                       size="default"
-                      className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm font-medium"
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm font-semibold"
                     >
                       <a
                         href={project.live}
@@ -145,7 +145,7 @@ export function Projects() {
                         className="gap-2"
                       >
                         <Globe className="h-4 w-4" />
-                        <span>Live Demo</span>
+                        <span>Visit Live Website</span>
                         <ExternalLink className="h-3.5 w-3.5 opacity-70" />
                       </a>
                     </Button>
@@ -174,6 +174,21 @@ export function Projects() {
                     </Button>
                   )}
                 </div>
+
+                {"live" in project && project.live && (
+                  <div className="flex flex-wrap items-center gap-2 rounded-lg border border-border/60 bg-muted/40 px-3.5 py-2 text-xs font-mono">
+                    <span className="text-muted-foreground">Live URL:</span>
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline inline-flex items-center gap-1 font-semibold truncate"
+                    >
+                      {project.live}
+                      <ExternalLink className="h-3 w-3 shrink-0" />
+                    </a>
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}

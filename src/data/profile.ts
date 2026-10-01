@@ -51,6 +51,8 @@ export const profile = {
     phone: "+91 86035 58113",
     phoneUrl: "tel:+918603558113",
     whatsappUrl: "https://wa.me/918603558113",
+    portfolio: "https://yuvrajrajput26.vercel.app",
+    stylioWebsite: "https://stylio-hazel.vercel.app/",
   },
 } as const;
 
