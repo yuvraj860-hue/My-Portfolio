@@ -8,6 +8,8 @@ export const profile = {
     "I design, build and integrate intelligent systems that combine modern machine learning with practical, search-optimized software — turning data into products recruiters and businesses can verify and trust.",
   tagline: "Building AI-native products with verified, measurable results.",
   email: "yuvrajsingh45842@gmail.com",
+  phone: "+91 86035 58113",
+  phoneRaw: "+918603558113",
   location: {
     current: "Jaipur, Rajasthan, India",
     origin: "Sasaram, Rohtas, Bihar, India",
@@ -45,6 +47,10 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/yuvraj-singh-1742a3393/",
     linkedinUsername: "yuvraj-singh-1742a3393",
     email: "yuvrajsingh45842@gmail.com",
+    emailUrl: "mailto:yuvrajsingh45842@gmail.com",
+    phone: "+91 86035 58113",
+    phoneUrl: "tel:+918603558113",
+    whatsappUrl: "https://wa.me/918603558113",
   },
 } as const;
 

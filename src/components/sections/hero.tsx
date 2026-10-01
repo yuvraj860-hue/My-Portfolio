@@ -9,6 +9,7 @@ import {
   Linkedin,
   Mail,
   MapPin,
+  Phone,
   Search,
   Sparkles,
   Trophy,
@@ -218,8 +219,8 @@ export function Hero() {
           </Button>
         </div>
 
-        {/* Social Links */}
-        <div className="mt-7 flex items-center justify-center gap-4 text-sm" aria-label="Social links">
+        {/* Social & Direct Contact Links */}
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-3 text-sm" aria-label="Social links">
           <a
             href={profile.links.github}
             target="_blank"
@@ -244,6 +245,13 @@ export function Hero() {
           >
             <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
             Email
+          </a>
+          <a
+            href={profile.links.phoneUrl}
+            className="flex items-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-3.5 py-1.5 text-emerald-600 dark:text-emerald-400 font-medium transition-all duration-200 hover:border-emerald-500 hover:bg-emerald-500/20 hover:shadow-sm"
+          >
+            <Phone className="h-4 w-4 text-emerald-500" aria-hidden="true" />
+            <span>{profile.phone}</span>
           </a>
         </div>
 

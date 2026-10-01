@@ -97,6 +97,7 @@ const jsonLd = [
     name: profile.name,
     url: siteUrl,
     email: profile.email,
+    telephone: profile.phone,
     jobTitle: profile.title,
     knowsAbout: [
       "Artificial Intelligence",

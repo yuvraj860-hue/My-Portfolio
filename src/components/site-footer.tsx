@@ -1,4 +1,4 @@
-import { Download, Github, Linkedin, Mail, Sparkles } from "lucide-react";
+import { Download, Github, Linkedin, Mail, Phone, Sparkles } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
 import { navLinks, profile } from "@/data/profile";
@@ -68,10 +68,17 @@ export function SiteFooter() {
             </a>
             <a
               href={`mailto:${profile.email}`}
-              aria-label="Email"
+              aria-label="Email Yuvraj"
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-border/80 bg-background/80 text-muted-foreground transition-all hover:border-primary/50 hover:text-foreground"
             >
               <Mail className="h-4 w-4 text-primary" />
+            </a>
+            <a
+              href={profile.links.phoneUrl}
+              aria-label={`Call Yuvraj at ${profile.phone}`}
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-border/80 bg-background/80 text-muted-foreground transition-all hover:border-emerald-500/50 hover:text-emerald-500"
+            >
+              <Phone className="h-4 w-4 text-emerald-500" />
             </a>
           </div>
         </div>

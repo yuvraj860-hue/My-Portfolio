@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Download, FileText, Menu, X } from "lucide-react";
+import { Download, FileText, Menu, Phone, X } from "lucide-react";
 import { useState } from "react";
 
 import { ResumeModal } from "@/components/resume-modal";
@@ -113,6 +113,14 @@ export function SiteHeader() {
           ))}
 
           <div className="mt-3 pt-3 border-t border-border/80 flex flex-col gap-2">
+            <a
+              href={profile.links.phoneUrl}
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-500/10 py-2 text-xs font-bold text-emerald-600 dark:text-emerald-400"
+            >
+              <Phone className="h-3.5 w-3.5" />
+              Call Me ({profile.phone})
+            </a>
             <a
               href={profile.resume.url}
               download={profile.resume.filename}
