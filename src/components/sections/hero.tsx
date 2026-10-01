@@ -42,14 +42,14 @@ export function Hero() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Parallax offset: moves upward as the user scrolls down
-  const parallaxOffset = Math.min(scrollY * 0.28, 90);
+  // Parallax offset: moves upward prominently as the user scrolls down
+  const parallaxOffset = Math.min(scrollY * 0.45, 130);
 
   return (
     <section
       id="home"
       aria-label="Introduction"
-      className="relative overflow-hidden pt-10 pb-20 md:pt-16 md:pb-28"
+      className="relative overflow-hidden pt-8 pb-20 md:pt-14 md:pb-28"
     >
       {/* Dynamic ambient gradients */}
       <div
@@ -198,8 +198,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Positioned at Top alongside H1, with Dynamic Scroll Parallax */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end lg:pt-2">
+          {/* Right Column: Shifted High Up into Upper Corner with Smooth Parallax Scroll Motion */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end lg:-mt-8">
             <div
               className="relative group will-change-transform transition-transform duration-200 ease-out"
               style={{
@@ -209,19 +209,19 @@ export function Hero() {
               {/* Outer Radiant Glow Ring */}
               <div
                 aria-hidden="true"
-                className="absolute -inset-4 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 opacity-70 blur-2xl transition-all duration-700 group-hover:opacity-100 group-hover:blur-3xl animate-pulse-slow"
+                className="absolute -inset-4 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 opacity-75 blur-2xl transition-all duration-700 group-hover:opacity-100 group-hover:blur-3xl animate-pulse-slow"
               />
 
               {/* Gradient Border Frame (Circle) with Float Motion */}
-              <div className="relative rounded-full p-2 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 shadow-2xl animate-float">
+              <div className="relative rounded-full p-2.5 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 shadow-2xl animate-float">
                 {/* Inner Padding Ring */}
                 <div className="rounded-full p-1.5 bg-background/95 backdrop-blur-xl">
-                  {/* Circular Image Container */}
-                  <div className="relative h-64 w-64 sm:h-72 sm:w-72 md:h-80 md:w-80 overflow-hidden rounded-full border-2 border-primary/30 bg-muted/40 shadow-inner">
+                  {/* Circular Image Container: Clean centered portrait */}
+                  <div className="relative h-64 w-64 sm:h-72 sm:w-72 md:h-80 md:w-80 lg:h-88 lg:w-88 overflow-hidden rounded-full border-2 border-primary/30 bg-muted/40 shadow-inner">
                     {!imgError ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        src={`${profile.avatar}?v=${Date.now()}`}
+                        src={profile.avatar}
                         alt={profile.name}
                         onError={() => setImgError(true)}
                         className="h-full w-full object-cover object-center scale-105 transition-transform duration-700 group-hover:scale-115"
@@ -240,7 +240,7 @@ export function Hero() {
               </div>
 
               {/* Floating Glass Pill: Top-Right */}
-              <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-4 rounded-full border border-primary/30 bg-card/90 px-3.5 py-1.5 shadow-xl backdrop-blur-md text-xs font-semibold text-foreground flex items-center gap-1.5 transition-transform duration-300 group-hover:scale-105">
+              <div className="absolute -top-3 -right-2 sm:-top-4 sm:-right-4 rounded-full border border-primary/30 bg-card/90 px-3.5 py-1.5 shadow-xl backdrop-blur-md text-xs font-semibold text-foreground flex items-center gap-1.5 transition-transform duration-300 group-hover:scale-105">
                 <Brain className="h-3.5 w-3.5 text-primary" />
                 <span>AI/ML Engineer</span>
               </div>
