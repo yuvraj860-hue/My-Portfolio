@@ -146,7 +146,8 @@ export const projects = [
     ],
     stack: ["Next.js", "React", "TypeScript", "Node.js", "Tailwind CSS"],
     github: "https://github.com/yuvraj860-hue/stylio",
-    status: "Public Repository",
+    live: "https://stylio-hazel.vercel.app/",
+    status: "Live & Open Source",
     featured: true,
   },
 ] as const;
