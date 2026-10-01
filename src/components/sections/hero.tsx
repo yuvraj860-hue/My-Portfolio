@@ -13,7 +13,7 @@ import {
   Sparkles,
   Trophy,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ResumeModal } from "@/components/resume-modal";
 import { Badge } from "@/components/ui/badge";
@@ -24,6 +24,26 @@ const statIcons = [Sparkles, Search, Trophy, Brain];
 
 export function Hero() {
   const [imgError, setImgError] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Parallax offset: moves upward as the user scrolls down (max 75px)
+  const parallaxOffset = Math.min(scrollY * 0.18, 75);
 
   return (
     <section
@@ -177,28 +197,33 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Futuristic Circular Profile Design */}
+          {/* Right Column: Futuristic Circular Profile with Scroll Parallax & Floating Animation */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative group">
+            <div
+              className="relative group will-change-transform transition-transform duration-300 ease-out"
+              style={{
+                transform: `translateY(-${parallaxOffset}px)`,
+              }}
+            >
               {/* Outer Radiant Glow Ring */}
               <div
                 aria-hidden="true"
-                className="absolute -inset-4 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 opacity-60 blur-2xl transition-all duration-700 group-hover:opacity-90 group-hover:blur-3xl animate-pulse-slow"
+                className="absolute -inset-4 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 opacity-65 blur-2xl transition-all duration-700 group-hover:opacity-95 group-hover:blur-3xl animate-pulse-slow"
               />
 
-              {/* Gradient Border Frame (Circle) */}
-              <div className="relative rounded-full p-2 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 shadow-2xl">
+              {/* Gradient Border Frame (Circle) with Float Motion */}
+              <div className="relative rounded-full p-2 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 shadow-2xl animate-float">
                 {/* Inner Padding Ring */}
                 <div className="rounded-full p-1.5 bg-background/95 backdrop-blur-xl">
                   {/* Circular Image Container */}
-                  <div className="relative h-64 w-64 sm:h-72 sm:w-72 md:h-80 md:w-80 overflow-hidden rounded-full border-2 border-primary/30 bg-muted/40 shadow-inner">
+                  <div className="relative h-64 w-64 sm:h-72 sm:w-72 md:h-84 md:w-84 overflow-hidden rounded-full border-2 border-primary/30 bg-muted/40 shadow-inner">
                     {!imgError ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={profile.avatar}
                         alt={profile.name}
                         onError={() => setImgError(true)}
-                        className="h-full w-full object-cover object-[center_12%] scale-110 transition-transform duration-700 group-hover:scale-120"
+                        className="h-full w-full object-cover object-center scale-105 transition-transform duration-700 group-hover:scale-115"
                       />
                     ) : (
                       /* Fallback avatar */
@@ -213,14 +238,14 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* Floating Glass Pill: Top-Right */}
-              <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-4 rounded-full border border-primary/30 bg-card/85 px-3.5 py-1.5 shadow-xl backdrop-blur-md text-xs font-semibold text-foreground flex items-center gap-1.5 animate-float">
+              {/* Floating Glass Pill: Top-Right (with smooth subtle counter-float) */}
+              <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-4 rounded-full border border-primary/30 bg-card/85 px-3.5 py-1.5 shadow-xl backdrop-blur-md text-xs font-semibold text-foreground flex items-center gap-1.5 transition-transform duration-300 group-hover:scale-105">
                 <Brain className="h-3.5 w-3.5 text-primary" />
                 <span>AI/ML Engineer</span>
               </div>
 
               {/* Floating Glass Pill: Bottom-Left */}
-              <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-4 rounded-full border border-emerald-500/30 bg-card/85 px-3.5 py-1.5 shadow-xl backdrop-blur-md text-xs font-medium text-foreground flex items-center gap-2">
+              <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-4 rounded-full border border-emerald-500/30 bg-card/85 px-3.5 py-1.5 shadow-xl backdrop-blur-md text-xs font-medium text-foreground flex items-center gap-2 transition-transform duration-300 group-hover:scale-105">
                 <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
                 <span className="font-mono text-[11px] text-emerald-500 font-semibold">Ready for Work</span>
               </div>
