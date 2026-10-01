@@ -42,8 +42,9 @@ export function Hero() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Parallax scroll effect
-  const parallaxOffset = Math.min(scrollY * 0.25, 60);
+  // Dynamic scroll styling: upward glide & elegant scaling
+  const parallaxOffset = Math.min(scrollY * 0.35, 80);
+  const scrollScale = Math.max(1 - scrollY * 0.0008, 0.88);
 
   return (
     <section
@@ -98,11 +99,11 @@ export function Hero() {
           </Badge>
         </div>
 
-        {/* Circular Profile Photo DIRECTLY ABOVE THE NAME with Radiant Glow Ring & Parallax */}
+        {/* Circular Profile Photo DIRECTLY ABOVE THE NAME with Radiant Glow Ring & Dynamic Scroll Styling */}
         <div
           className="relative group my-3 will-change-transform transition-transform duration-200 ease-out"
           style={{
-            transform: `translateY(-${parallaxOffset}px)`,
+            transform: `translateY(-${parallaxOffset}px) scale(${scrollScale})`,
           }}
         >
           {/* Outer Radiant Glow Ring */}

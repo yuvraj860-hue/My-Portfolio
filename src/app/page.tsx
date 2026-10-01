@@ -1,3 +1,4 @@
+import { FloatingAvatar } from "@/components/floating-avatar";
 import { About } from "@/components/sections/about";
 import { Certifications } from "@/components/sections/certifications";
 import { Contact } from "@/components/sections/contact";
@@ -9,6 +10,7 @@ import { ResumeSection } from "@/components/sections/resume";
 export default function Home() {
   return (
     <>
+      <FloatingAvatar />
       <Hero />
       <About />
       <ResumeSection />
