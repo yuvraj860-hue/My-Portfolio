@@ -1,4 +1,6 @@
-import { Award, Clock, ExternalLink } from "lucide-react";
+"use client";
+
+import { Award, Clock, ExternalLink, ShieldCheck } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,19 +17,22 @@ export function Certifications() {
     <section
       id="certifications"
       aria-label="Certifications"
-      className="border-t py-20"
+      className="relative border-t py-24"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-            Experience & Certifications
-          </p>
-          <h2 className="text-balance mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Verified internships — certificates linked below.
+        <div className="mx-auto max-w-2xl text-center">
+          <Badge
+            variant="outline"
+            className="mb-3 rounded-full border-primary/30 px-3.5 py-1 text-xs font-mono font-medium text-primary bg-primary/5"
+          >
+            <ShieldCheck className="mr-1.5 h-3.5 w-3.5" />
+            Verifiable Credentials
+          </Badge>
+          <h2 className="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
+            Verified <span className="text-gradient">Internships</span> & Certificates
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            Every credential on this page is linked to its original certificate,
-            so the claims are independently verifiable — the EEAT way.
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Every credential below links directly to its official verified document — upholding strict Experience, Expertise, Authoritativeness, and Trustworthiness (EEAT).
           </p>
         </div>
 
@@ -35,46 +40,48 @@ export function Certifications() {
           {certifications.map((cert) => (
             <Card
               key={cert.title}
-              className="group flex flex-col transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+              className="glass-card-interactive group flex flex-col justify-between border-border/80"
             >
               <CardHeader>
                 <div className="flex items-start justify-between gap-3">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <Award className="h-5 w-5" aria-hidden="true" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                    <Award className="h-6 w-6" aria-hidden="true" />
                   </div>
                   <Badge
                     variant="secondary"
-                    className="gap-1 rounded-full font-mono"
+                    className="gap-1.5 rounded-full font-mono text-xs"
                   >
                     <Clock className="h-3 w-3" aria-hidden="true" />
                     {cert.durationLabel}
                   </Badge>
                 </div>
-                <CardTitle className="text-lg leading-snug">
+                <CardTitle className="mt-2 text-xl font-bold leading-snug">
                   {cert.title}
                 </CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-1 flex-col">
-                <Badge variant="outline" className="mb-3 w-fit">
+                <Badge variant="outline" className="w-fit text-xs border-primary/30 text-primary">
                   {cert.focus}
                 </Badge>
-                <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
+              </CardHeader>
+
+              <CardContent className="flex flex-1 flex-col justify-between space-y-5">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {cert.description}
                 </p>
+
                 <Button
                   asChild
                   variant="outline"
-                  size="sm"
-                  className="mt-5 w-fit"
+                  size="default"
+                  className="w-full gap-2 border-primary/30 hover:bg-primary/10 text-xs font-semibold"
                 >
                   <a
                     href={cert.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${cert.title} — opens in new tab`}
+                    aria-label={`${cert.title} — opens Google Drive in new tab`}
                   >
-                    View Certificate
-                    <ExternalLink className="ml-1 h-4 w-4" aria-hidden="true" />
+                    <span>View Official Certificate</span>
+                    <ExternalLink className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
                   </a>
                 </Button>
               </CardContent>

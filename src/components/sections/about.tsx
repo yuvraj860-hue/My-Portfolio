@@ -1,35 +1,34 @@
+"use client";
+
 import {
-  Building2,
+  Cpu,
   GraduationCap,
   Home,
   MapPin,
-  Smartphone,
+  Sparkles,
 } from "lucide-react";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { profile } from "@/data/profile";
 
-const aboutPoints = [
+const aboutCards = [
   {
     icon: GraduationCap,
     title: profile.university.name,
     detail: `${profile.university.program} · ${profile.university.city}`,
-  },
-  {
-    icon: Home,
-    title: "Origin",
-    detail: profile.location.origin,
+    tag: profile.university.enrolled,
   },
   {
     icon: MapPin,
-    title: "Currently Based In",
+    title: "Current Location",
     detail: profile.location.current,
+    tag: profile.location.timezone,
+  },
+  {
+    icon: Home,
+    title: "Hometown / Origin",
+    detail: profile.location.origin,
+    tag: "India",
   },
 ] as const;
 
@@ -38,93 +37,97 @@ export function About() {
     <section
       id="about"
       aria-label="About"
-      className="border-t bg-muted/30 py-20"
+      className="relative border-t bg-muted/20 py-24"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid items-start gap-12 lg:grid-cols-2">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-              About Me
-            </p>
-            <h2 className="text-balance mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              An AI engineer who builds products people can verify — and trust.
+        <div className="grid items-start gap-12 lg:grid-cols-12">
+          {/* Left Column */}
+          <div className="lg:col-span-7">
+            <Badge
+              variant="outline"
+              className="mb-3 rounded-full border-primary/30 px-3.5 py-1 text-xs font-mono font-medium text-primary bg-primary/5"
+            >
+              <Sparkles className="mr-1.5 h-3 w-3" />
+              Engineering Philosophy
+            </Badge>
+
+            <h2 className="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
+              An AI engineer building systems that <span className="text-gradient">perform</span> and get discovered.
             </h2>
-            <p className="mt-6 leading-relaxed text-muted-foreground">
-              I am an aspiring {profile.title} based in {profile.location.current},
-              focused on {profile.university.program} at {profile.university.name} .
-              My work sits at the intersection of machine learning and modern web
-              engineering — building intelligent products, then making sure they
-              are actually found by users and AI engines alike.
+
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              I am an aspiring <strong className="text-foreground font-semibold">{profile.title}</strong> based in {profile.location.current}, pursuing my {profile.university.program} at {profile.university.name}.
             </p>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              Beyond model building, I specialize in the modern search stack —
-              SEO, AEO, GEO, LLMO, AISEO and EEAT — so every product I ship is
-              discoverable, quotable and authoritative. Real internship
-              certificates, public repositories and a verifiable 3/3 agentic
-              browsing score back the claims on this page.
+
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              My engineering focus bridges two critical worlds: building resilient machine learning pipelines and RAG systems, while ensuring the resulting software is engineered for modern discovery — encompassing classic SEO as well as modern Generative and Answer Engines (AEO, GEO, LLMO).
             </p>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {profile.techStack.map((tech) => (
-                <Badge key={tech} variant="secondary" className="rounded-full">
-                  {tech}
-                </Badge>
-              ))}
+
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Every skill on this portfolio is backed by verifiable artifacts: real internship certificates, public GitHub repositories, and a verified 3/3 Agentic Browsing Score.
+            </p>
+
+            {/* Tech Stack Pills */}
+            <div className="mt-8">
+              <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">
+                Core Technologies & Frameworks
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {profile.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="inline-flex items-center rounded-lg border border-border/80 bg-card/80 px-3 py-1.5 text-xs font-medium text-foreground transition-all duration-200 hover:border-primary/50 hover:bg-primary/5 hover:text-primary"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="space-y-4">
-            {aboutPoints.map((point) => {
-              const Icon = point.icon;
+          {/* Right Column Cards */}
+          <div className="space-y-4 lg:col-span-5">
+            {aboutCards.map((card) => {
+              const Icon = card.icon;
               return (
-                <Card key={point.title}>
-                  <CardHeader className="flex flex-row items-center gap-4 space-y-0">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-base">{point.title}</CardTitle>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {point.detail}
+                <div
+                  key={card.title}
+                  className="glass-card-interactive flex items-start gap-4 rounded-2xl p-5"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Icon className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-sm font-bold text-foreground">
+                        {card.title}
                       </p>
+                      <Badge variant="secondary" className="font-mono text-[10px]">
+                        {card.tag}
+                      </Badge>
                     </div>
-                  </CardHeader>
-                </Card>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {card.detail}
+                    </p>
+                  </div>
+                </div>
               );
             })}
 
-            <Card>
-              <CardHeader className="flex flex-row items-center gap-4 space-y-0">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <Smartphone className="h-5 w-5" aria-hidden="true" />
+            {/* Special Focus Card */}
+            <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card to-accent/5 p-6 shadow-md backdrop-blur">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                  <Cpu className="h-5 w-5" />
                 </div>
                 <div>
-                  <CardTitle className="text-base">My Focus</CardTitle>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    AI/ML engineering with a modern-web edge — models that work
-                    in production, and product surfaces that work with search.
-                  </p>
+                  <h3 className="font-bold text-base text-foreground">AI Integration Edge</h3>
+                  <p className="text-xs text-muted-foreground">Agentic Workflows & Search Visibility</p>
                 </div>
-              </CardHeader>
-              <CardContent className="flex flex-wrap gap-2">
-                {["Machine Learning", "LLM Integration", "RAG", "Prompt Engineering"]
-                  .map((focus) => (
-                    <Badge key={focus} variant="outline" className="rounded-full">
-                      {focus}
-                    </Badge>
-                  ))}
-              </CardContent>
-            </Card>
-
-            <div className="flex items-center gap-3 rounded-xl border bg-card p-4">
-              <Building2 className="h-8 w-8 shrink-0 text-primary" />
-              <div>
-                <p className="text-sm font-semibold">
-                  {profile.university.name}, {profile.university.city}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {profile.university.program}
-                </p>
               </div>
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                Optimized for autonomous agent interaction and citation across AI engines like ChatGPT, Perplexity, and Google AI Overviews.
+              </p>
             </div>
           </div>
         </div>

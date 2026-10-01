@@ -33,6 +33,11 @@ export const profile = {
     "Tailwind CSS",
     "REST APIs",
   ],
+  resume: {
+    url: "/resume.pdf",
+    filename: "Yuvraj_Singh_Resume.pdf",
+    lastUpdated: "October 2026",
+  },
   links: {
     github: "https://github.com/yuvraj860-hue",
     githubUsername: "yuvraj860-hue",
@@ -160,8 +165,99 @@ export const certifications = [
   },
 ] as const;
 
+export const education = [
+  {
+    institution: "Jagannath University",
+    city: "Jaipur, Rajasthan",
+    degree: "Bachelor of Technology (B.Tech)",
+    field: "Computer Science & Engineering",
+    period: "2023 - Present",
+    status: "Pursuing",
+    highlights: [
+      "Core focus on Artificial Intelligence, Machine Learning & Algorithms",
+      "Specialized research in Agentic Workflows & Retrieval-Augmented Generation (RAG)",
+      "Active participant in development hackathons and modern search tech",
+    ],
+  },
+] as const;
+
+export const experience = [
+  {
+    role: "Engineering & Development Intern",
+    period: "6 Weeks",
+    type: "Professional Internship",
+    focus: "Advanced Development & Machine Learning Systems",
+    organization: "Professional Training Program",
+    description:
+      "Engineered machine learning pipelines and web integrations, applying production-level engineering workflows, version control, and scalable code architecture.",
+    certificateUrl:
+      "https://drive.google.com/file/d/1G1agQUWK6UYR9G5wFJjzarH5xWqwEExg/view?usp=sharing",
+  },
+  {
+    role: "Technical Foundations & Deployment Intern",
+    period: "4 Weeks",
+    type: "Technical Internship",
+    focus: "Tooling, Version Control & Practical Deployment",
+    organization: "Structured Mentorship Program",
+    description:
+      "Completed hands-on deployment pipelines, REST API integrations, and developer tooling with strict quality standards and timely milestone completions.",
+    certificateUrl:
+      "https://drive.google.com/file/d/11PGMyZdZ4e_ORXhqnfC9S64mLkR0jfiZ/view?usp=sharing",
+  },
+] as const;
+
+export const skillCategories = [
+  {
+    category: "AI & Machine Learning",
+    skills: [
+      "Machine Learning",
+      "Deep Learning",
+      "LangChain",
+      "RAG Architecture",
+      "Prompt Engineering",
+      "Agentic Browsing",
+      "Model Evaluation",
+    ],
+  },
+  {
+    category: "Full-Stack Development",
+    skills: [
+      "React",
+      "Next.js (App Router)",
+      "TypeScript",
+      "Node.js",
+      "Tailwind CSS",
+      "RESTful APIs",
+      "Python",
+    ],
+  },
+  {
+    category: "Modern Search Optimization",
+    skills: [
+      "SEO (Classic Search)",
+      "AEO (Answer Engines)",
+      "GEO (Generative Engines)",
+      "LLMO (Model Optimization)",
+      "AISEO (Unified AI Search)",
+      "EEAT Compliance",
+    ],
+  },
+  {
+    category: "Tools & DevOps",
+    skills: [
+      "Git & GitHub",
+      "VS Code",
+      "Postman",
+      "Vercel",
+      "Linux / Windows",
+      "Structured Schema Markup",
+    ],
+  },
+] as const;
+
 export const navLinks = [
   { label: "About", href: "#about" },
+  { label: "Resume", href: "#resume" },
   { label: "Expertise", href: "#expertise" },
   { label: "Projects", href: "#projects" },
   { label: "Certifications", href: "#certifications" },
