@@ -22,8 +22,13 @@ export function SiteHeader() {
           className="group flex items-center gap-2.5 font-mono text-sm font-bold tracking-tight"
           aria-label={`${profile.name} — home`}
         >
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-primary to-accent text-white shadow-md shadow-primary/20 transition-transform group-hover:scale-105">
-            <span className="font-bold text-xs tracking-wider">YS</span>
+          <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full overflow-hidden border border-primary/40 bg-gradient-to-tr from-primary to-accent text-white shadow-md shadow-primary/20 transition-transform group-hover:scale-105">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={profile.avatar}
+              alt={profile.name}
+              className="h-full w-full object-cover object-[center_12%]"
+            />
             <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />

@@ -177,52 +177,52 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Futuristic Profile Photo Card */}
+          {/* Right Column: Futuristic Circular Profile Design */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative group">
-              {/* Outer Glow Halo */}
+              {/* Outer Radiant Glow Ring */}
               <div
                 aria-hidden="true"
-                className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-600 opacity-60 blur-xl transition-all duration-500 group-hover:opacity-100 group-hover:blur-2xl"
+                className="absolute -inset-4 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 opacity-60 blur-2xl transition-all duration-700 group-hover:opacity-90 group-hover:blur-3xl animate-pulse-slow"
               />
 
-              {/* Main Photo Card Container */}
-              <div className="relative flex flex-col items-center overflow-hidden rounded-3xl border border-border/80 bg-card/90 p-4 shadow-2xl backdrop-blur-xl">
-                {/* Photo Display */}
-                <div className="relative h-72 w-72 sm:h-80 sm:w-80 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-muted to-accent/10 border border-primary/20">
-                  {!imgError ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={profile.avatar}
-                      alt={profile.name}
-                      onError={() => setImgError(true)}
-                      className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    /* Fallback avatar if no photo yet uploaded */
-                    <div className="flex h-full w-full flex-col items-center justify-center p-6 text-center">
-                      <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-tr from-primary to-accent text-white shadow-xl shadow-primary/30">
-                        <span className="font-mono text-3xl font-black">YS</span>
+              {/* Gradient Border Frame (Circle) */}
+              <div className="relative rounded-full p-2 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 shadow-2xl">
+                {/* Inner Padding Ring */}
+                <div className="rounded-full p-1.5 bg-background/95 backdrop-blur-xl">
+                  {/* Circular Image Container */}
+                  <div className="relative h-64 w-64 sm:h-72 sm:w-72 md:h-80 md:w-80 overflow-hidden rounded-full border-2 border-primary/30 bg-muted/40 shadow-inner">
+                    {!imgError ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={profile.avatar}
+                        alt={profile.name}
+                        onError={() => setImgError(true)}
+                        className="h-full w-full object-cover object-[center_12%] scale-110 transition-transform duration-700 group-hover:scale-120"
+                      />
+                    ) : (
+                      /* Fallback avatar */
+                      <div className="flex h-full w-full flex-col items-center justify-center p-6 text-center">
+                        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-tr from-primary to-accent text-white shadow-xl">
+                          <span className="font-mono text-2xl font-black">YS</span>
+                        </div>
+                        <p className="mt-3 font-bold text-foreground">{profile.name}</p>
                       </div>
-                      <p className="mt-4 font-bold text-foreground">{profile.name}</p>
-                      <p className="text-xs text-muted-foreground mt-1">Photo slot ready: public/profile.jpg</p>
-                    </div>
-                  )}
-
-                  {/* Glass Tag on Photo */}
-                  <div className="absolute bottom-3 left-3 right-3 rounded-xl border border-white/20 bg-black/50 p-2.5 backdrop-blur-md text-white text-center">
-                    <p className="text-xs font-semibold">{profile.name}</p>
-                    <p className="text-[11px] text-white/80">{profile.title}</p>
+                    )}
                   </div>
                 </div>
+              </div>
 
-                {/* Floating pill badge */}
-                <div className="mt-3 flex items-center gap-2">
-                  <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-xs font-mono text-muted-foreground">
-                    Verified Engineer · {profile.agenticBrowsingScore} Score
-                  </span>
-                </div>
+              {/* Floating Glass Pill: Top-Right */}
+              <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-4 rounded-full border border-primary/30 bg-card/85 px-3.5 py-1.5 shadow-xl backdrop-blur-md text-xs font-semibold text-foreground flex items-center gap-1.5 animate-float">
+                <Brain className="h-3.5 w-3.5 text-primary" />
+                <span>AI/ML Engineer</span>
+              </div>
+
+              {/* Floating Glass Pill: Bottom-Left */}
+              <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-4 rounded-full border border-emerald-500/30 bg-card/85 px-3.5 py-1.5 shadow-xl backdrop-blur-md text-xs font-medium text-foreground flex items-center gap-2">
+                <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
+                <span className="font-mono text-[11px] text-emerald-500 font-semibold">Ready for Work</span>
               </div>
             </div>
           </div>
